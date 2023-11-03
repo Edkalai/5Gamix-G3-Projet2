@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
             	git branch: 'KalaiAhmed-5Gamix-G3',
-                git url: 'https://github.com/Edkalai/5Gamix-G3-Projet2.git'
+                url: 'https://github.com/Edkalai/5Gamix-G3-Projet2.git'
             }
         }
 
@@ -15,9 +15,4 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            steps {
-                sh 'mvn deploy'
-            }
-        }
 }
