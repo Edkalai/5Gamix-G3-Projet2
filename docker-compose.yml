@@ -5,8 +5,8 @@ services:
     image: mysql:latest
     restart: unless-stopped
     environment:
-      - MYSQL_ROOT_PASSWORD: root
-      - MYSQL_DATABASE : kaddemdb
+       MYSQL_ROOT_PASSWORD: root
+       MYSQL_DATABASE : kaddemdb
     ports:
       - 3306:3306
     volumes:
@@ -18,7 +18,7 @@ services:
     ports:
       - 8082:8082
     volumes:
-    -kaddem_volume: /app/config 
+    - kaddem_volume:/app/config 
 volumes:
   db:
   kaddem_volume:
