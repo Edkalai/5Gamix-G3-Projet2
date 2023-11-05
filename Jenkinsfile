@@ -9,4 +9,13 @@ pipeline {
                 checkout scm
             }
         }
+        stage('Run Unit Tests') {
+            steps {
+                 
+                    script {
+                        sh 'mvn clean install' 
+                    }
+                
+            }
+        }
     }}
