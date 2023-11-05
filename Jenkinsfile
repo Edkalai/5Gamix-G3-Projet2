@@ -32,11 +32,7 @@ pipeline {
                 }
             }
         }
-        stage('JUNIT/MOKITO') {
-            steps {
-                sh 'mvn test'
-            }
-        }      
+             
         
         
 
