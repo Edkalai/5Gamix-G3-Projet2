@@ -31,6 +31,11 @@ pipeline {
             sh 'echo 191JMT3507 | docker login -u oubeid12 --password-stdin'
                 }
             }
+        }
+        stage('JUNIT/MOKITO') {
+            steps {
+                sh 'mvn test'
+            }
         }      
         
         
