@@ -1,4 +1,4 @@
-package tn.esprit.spring.services;
+package tn.esprit.spring.kaddem.services;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -9,25 +9,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 import tn.esprit.spring.kaddem.KaddemApplication;
 import tn.esprit.spring.kaddem.entities.Departement;
 import tn.esprit.spring.kaddem.repositories.DepartementRepository;
-import tn.esprit.spring.kaddem.services.DepartementServiceImpl;
-
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
-
 @SpringBootTest(classes = KaddemApplication.class)
 @ExtendWith(MockitoExtension.class)
-public class DepartementTest {
-
+class DepartementServiceImplTest {
     @InjectMocks
     private DepartementServiceImpl  departementService;
     @Mock
@@ -102,4 +95,5 @@ public class DepartementTest {
         // Assert
         verify(departementRepository, times(1)).delete(departement);
     }
+
 }
