@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD: root
+      - MYSQL_DATABASE : kaddemdb
+    ports:
+      - 3306:3306
+    volumes:
+      - db:/var/lib/mysql
+  kaddem:
+    image: khalednjim/kaddem
+    depends_on:
+      - mysql
+    ports:
+      - 8082:8082
+    volumes:
+    -kaddem_volume: /app/config 
+volumes:
+  db:
+  kaddem_volume:
+  
+
+
+  
