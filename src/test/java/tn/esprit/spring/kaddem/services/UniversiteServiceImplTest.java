@@ -5,18 +5,18 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
 import tn.esprit.spring.kaddem.entities.Departement;
 import tn.esprit.spring.kaddem.entities.Universite;
 import tn.esprit.spring.kaddem.repositories.DepartementRepository;
 import tn.esprit.spring.kaddem.repositories.UniversiteRepository;
 
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UniversiteServiceImplTest {
 
@@ -31,7 +31,7 @@ public class UniversiteServiceImplTest {
 
     @BeforeEach
     public void setUp() {
-        MockitoAnnotations.openMocks(this);
+        MockitoAnnotations.initMocks(this);
     }
 
     @Test
@@ -48,7 +48,6 @@ public class UniversiteServiceImplTest {
 
     @Test
     public void testAddUniversite() {
-
         Universite universite = new Universite("Esprit");
         when(universiteRepository.save(universite)).thenReturn(universite);
 
@@ -69,7 +68,7 @@ public class UniversiteServiceImplTest {
 
     @Test
     public void testRetrieveUniversite() {
-       Universite universite = new Universite("Esprit");
+        Universite universite = new Universite("Esprit");
         when(universiteRepository.findById(1)).thenReturn(Optional.of(universite));
 
         Universite result = universiteService.retrieveUniversite(1);
@@ -79,7 +78,6 @@ public class UniversiteServiceImplTest {
 
     @Test
     public void testDeleteUniversite() {
-
         Universite universite = new Universite("Esprit");
         when(universiteRepository.findById(1)).thenReturn(Optional.of(universite));
 
@@ -90,7 +88,6 @@ public class UniversiteServiceImplTest {
 
     @Test
     public void testAssignUniversiteToDepartement() {
-
         Universite universite = new Universite("Esprit");
         Departement departement = new Departement("Gamix");
         when(universiteRepository.findById(1)).thenReturn(Optional.of(universite));
@@ -104,7 +101,6 @@ public class UniversiteServiceImplTest {
 
     @Test
     public void testRetrieveDepartementsByUniversite() {
-
         Universite universite = new Universite("Esprit");
         Departement departement = new Departement("Gamix");
         universite.getDepartements().add(departement);
