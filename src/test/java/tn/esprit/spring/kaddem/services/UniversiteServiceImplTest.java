@@ -88,12 +88,11 @@ public class UniversiteServiceImplTest {
 
     @Test
     public void testAssignUniversiteToDepartement() {
+
         Universite universite = new Universite("Esprit");
         Departement departement = new Departement("Gamix");
-        when(universiteRepository.findById(1)).thenReturn(Optional.of(universite));
-        when(departementRepository.findById(1)).thenReturn(Optional.of(departement));
 
-        universiteService.assignUniversiteToDepartement(1, 1);
+        universiteService.assignUniversiteToDepartement(universite.getIdUniv(), departement.getIdDepart());
 
         assertTrue(universite.getDepartements().contains(departement));
         verify(universiteRepository, times(1)).save(universite);
@@ -101,12 +100,13 @@ public class UniversiteServiceImplTest {
 
     @Test
     public void testRetrieveDepartementsByUniversite() {
+
         Universite universite = new Universite("Esprit");
         Departement departement = new Departement("Gamix");
         universite.getDepartements().add(departement);
-        when(universiteRepository.findById(1)).thenReturn(Optional.of(universite));
+        when(universiteRepository.findById(universite.getIdUniv())).thenReturn(Optional.of(universite));
 
-        Set<Departement> result = universiteService.retrieveDepartementsByUniversite(1);
+        Set<Departement> result = universiteService.retrieveDepartementsByUniversite(universite.getIdUniv());
 
         assertTrue(result.contains(departement));
     }
