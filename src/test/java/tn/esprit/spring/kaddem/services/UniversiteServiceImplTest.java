@@ -5,18 +5,18 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
 import tn.esprit.spring.kaddem.entities.Departement;
 import tn.esprit.spring.kaddem.entities.Universite;
 import tn.esprit.spring.kaddem.repositories.DepartementRepository;
 import tn.esprit.spring.kaddem.repositories.UniversiteRepository;
 
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class UniversiteServiceImplTest {
 
@@ -31,7 +31,7 @@ public class UniversiteServiceImplTest {
 
     @BeforeEach
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
@@ -48,7 +48,9 @@ public class UniversiteServiceImplTest {
 
     @Test
     public void testAddUniversite() {
+
         Universite universite = new Universite("Esprit");
+        universite.setIdUniv(1);
         when(universiteRepository.save(universite)).thenReturn(universite);
 
         Universite result = universiteService.addUniversite(universite);
@@ -59,6 +61,7 @@ public class UniversiteServiceImplTest {
     @Test
     public void testUpdateUniversite() {
         Universite universite = new Universite("Esprit");
+        universite.setIdUniv(1);
         when(universiteRepository.save(universite)).thenReturn(universite);
 
         Universite result = universiteService.updateUniversite(universite);
@@ -68,7 +71,8 @@ public class UniversiteServiceImplTest {
 
     @Test
     public void testRetrieveUniversite() {
-        Universite universite = new Universite("Esprit");
+       Universite universite = new Universite("Esprit");
+       universite.setIdUniv(1);
         when(universiteRepository.findById(1)).thenReturn(Optional.of(universite));
 
         Universite result = universiteService.retrieveUniversite(1);
@@ -78,7 +82,9 @@ public class UniversiteServiceImplTest {
 
     @Test
     public void testDeleteUniversite() {
+
         Universite universite = new Universite("Esprit");
+        universite.setIdUniv(1);
         when(universiteRepository.findById(1)).thenReturn(Optional.of(universite));
 
         universiteService.deleteUniversite(1);
@@ -92,7 +98,10 @@ public class UniversiteServiceImplTest {
         Universite universite = new Universite("Esprit");
         Departement departement = new Departement("Gamix");
 
-        universiteService.assignUniversiteToDepartement(universite.getIdUniv(), departement.getIdDepart());
+        universite.setIdUniv(1);
+        departement.setIdDepart(1);
+
+        universiteService.assignUniversiteToDepartement(1,1);
 
         assertTrue(universite.getDepartements().contains(departement));
         verify(universiteRepository, times(1)).save(universite);
@@ -103,10 +112,12 @@ public class UniversiteServiceImplTest {
 
         Universite universite = new Universite("Esprit");
         Departement departement = new Departement("Gamix");
+         universite.setIdUniv(1);
+        departement.setIdDepart(1);
         universite.getDepartements().add(departement);
-        when(universiteRepository.findById(universite.getIdUniv())).thenReturn(Optional.of(universite));
+        when(universiteRepository.findById(1)).thenReturn(Optional.of(universite));
 
-        Set<Departement> result = universiteService.retrieveDepartementsByUniversite(universite.getIdUniv());
+        Set<Departement> result = universiteService.retrieveDepartementsByUniversite(1);
 
         assertTrue(result.contains(departement));
     }
