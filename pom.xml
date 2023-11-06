@@ -10,7 +10,7 @@
     </parent>
     <groupId>tn.esprit.spring</groupId>
     <artifactId>kaddem</artifactId>
-    <version>5gamix-G1-kaddem-0.1</version>
+    <version>5gamix-G3-kaddem-0.1</version>
     <name>kaddem</name>
     <description>kaddem</description>
     <properties>
