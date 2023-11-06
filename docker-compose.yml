@@ -14,7 +14,7 @@ services:
   kaddem-backend:
     depends_on:
       - mysqldb
-    image: spartinus/kaddem:1.0.0
+    image: spartinus/devops:1.0.0
     restart: on-failure
     ports:
       - 8089:8089
