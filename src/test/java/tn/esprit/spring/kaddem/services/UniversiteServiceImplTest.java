@@ -101,6 +101,8 @@ public class UniversiteServiceImplTest {
         universite.setIdUniv(1);
         departement.setIdDepart(1);
 
+        when(universiteRepository.findById(1)).thenReturn(Optional.of(universite));
+        when(departementRepository.findById(1)).thenReturn(Optional.of(departement));
         universiteService.assignUniversiteToDepartement(1,1);
 
         assertTrue(universite.getDepartements().contains(departement));
@@ -112,8 +114,9 @@ public class UniversiteServiceImplTest {
 
         Universite universite = new Universite("Esprit");
         Departement departement = new Departement("Gamix");
-         universite.setIdUniv(1);
+        universite.setIdUniv(1);
         departement.setIdDepart(1);
+        when(departementRepository.findById(1)).thenReturn(Optional.of(departement));
         universite.getDepartements().add(departement);
         when(universiteRepository.findById(1)).thenReturn(Optional.of(universite));
 
