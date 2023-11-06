@@ -13,8 +13,8 @@ services:
       - "3306:3306"
 
   kaddem:
-    image: edkalai/kaddem:latest
-    container_name: kaddem
+    image: edkalai/kalaiahmed-5gamix-g3-kaddem:latest
+    container_name: kalaiahmed-5gamix-g3-kaddem
     depends_on:
       - mysql
     ports:
