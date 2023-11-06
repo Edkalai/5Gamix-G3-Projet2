@@ -37,6 +37,8 @@ public class UniversiteServiceImplTest {
     @Test
     public void testRetrieveAllUniversites() {
         List<Universite> universites = new ArrayList<>();
+        universites.add(new Universite("Esprit"));
+        universites.add(new Universite("Insat"));
         when(universiteRepository.findAll()).thenReturn(universites);
 
         List<Universite> result = universiteService.retrieveAllUniversites();
@@ -47,7 +49,7 @@ public class UniversiteServiceImplTest {
     @Test
     public void testAddUniversite() {
 
-        Universite universite = new Universite();
+        Universite universite = new Universite("Esprit");
         when(universiteRepository.save(universite)).thenReturn(universite);
 
         Universite result = universiteService.addUniversite(universite);
@@ -57,7 +59,7 @@ public class UniversiteServiceImplTest {
 
     @Test
     public void testUpdateUniversite() {
-        Universite universite = new Universite();
+        Universite universite = new Universite("Esprit");
         when(universiteRepository.save(universite)).thenReturn(universite);
 
         Universite result = universiteService.updateUniversite(universite);
@@ -67,7 +69,7 @@ public class UniversiteServiceImplTest {
 
     @Test
     public void testRetrieveUniversite() {
-        Universite universite = new Universite();
+       Universite universite = new Universite("Esprit");
         when(universiteRepository.findById(1)).thenReturn(Optional.of(universite));
 
         Universite result = universiteService.retrieveUniversite(1);
@@ -78,7 +80,7 @@ public class UniversiteServiceImplTest {
     @Test
     public void testDeleteUniversite() {
 
-        Universite universite = new Universite();
+        Universite universite = new Universite("Esprit");
         when(universiteRepository.findById(1)).thenReturn(Optional.of(universite));
 
         universiteService.deleteUniversite(1);
@@ -89,8 +91,8 @@ public class UniversiteServiceImplTest {
     @Test
     public void testAssignUniversiteToDepartement() {
 
-        Universite universite = new Universite();
-        Departement departement = new Departement();
+        Universite universite = new Universite("Esprit");
+        Departement departement = new Departement("Gamix");
         when(universiteRepository.findById(1)).thenReturn(Optional.of(universite));
         when(departementRepository.findById(1)).thenReturn(Optional.of(departement));
 
@@ -103,8 +105,8 @@ public class UniversiteServiceImplTest {
     @Test
     public void testRetrieveDepartementsByUniversite() {
 
-        Universite universite = new Universite();
-        Departement departement = new Departement();
+        Universite universite = new Universite("Esprit");
+        Departement departement = new Departement("Gamix");
         universite.getDepartements().add(departement);
         when(universiteRepository.findById(1)).thenReturn(Optional.of(universite));
 
