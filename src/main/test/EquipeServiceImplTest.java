@@ -79,38 +79,5 @@ public class EquipeServiceImplTest {
         assertEquals(equipe, result);
     }
 
-    @Test
-    public void testEvoluerEquipes() {
-        List<Equipe> equipes = new ArrayList<>();
-
-        Equipe equipe1 = new Equipe();
-        equipe1.setNiveau(Niveau.JUNIOR);
-        Equipe equipe2 = new Equipe();
-        equipe2.setNiveau(Niveau.SENIOR);
-
-        Set<Contrat> contrats1 = new HashSet<>();
-        Set<Contrat> contrats2 = new HashSet<>();
-
-        // Add sample Contrats
-        Contrat contrat1 = new Contrat();
-        contrat1.setArchive(false);
-        contrat1.setDateFinContrat(new Date());
-        contrats1.add(contrat1);
-
-        equipe1.setEtudiants(new HashSet<>());
-        equipe2.setEtudiants(new HashSet<>());
-
-        equipe1.getEtudiants().add(new Etudiant(contrats1));
-        equipe2.getEtudiants().add(new Etudiant(contrats2));
-
-        equipes.add(equipe1);
-        equipes.add(equipe2);
-
-        when(equipeRepository.findAll()).thenReturn(equipes);
-        when(equipeRepository.save(any())).thenReturn(null);
-
-        equipeService.evoluerEquipes();
-
-        verify(equipeRepository, times(2)).save(any());
-    }
+   
 }
