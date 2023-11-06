@@ -70,6 +70,7 @@
     </distributionManagement>
 
     <build>
+    <finalName>5Gamix-G3-Kaddem</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
