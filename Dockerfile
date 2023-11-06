@@ -8,7 +8,7 @@ RUN mvn package -DskipTests
 
 # Étape d'exécution (stage 2)
 FROM adoptopenjdk/openjdk8
-COPY --from=build /app/target/kaddem-0.1-SNAPSHOT.jar /app/app.jar
+COPY --from=build /app/target/kaddem-0.0.1-SNAPSHOT.jar /app/app.jar
 WORKDIR /app
 EXPOSE 3306
 CMD ["java", "-jar", "app.jar"]
