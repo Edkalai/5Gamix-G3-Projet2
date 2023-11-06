@@ -1,0 +1,36 @@
+
+version: '3'
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysqldb
+    ports:
+      - "3306:3306"  # Map host port 3306 to container port 3306
+    environment:
+      MYSQL_DATABASE: mysql
+    volumes:
+      - ~/DB:/docker-entrypoint-initdb.d/data.sql
+    networks:
+      - docker-network
+
+  spring:
+    image: oubeid12/back
+    container_name: test
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/mysql?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      mysql
+    networks:
+      - docker-network
+    volumes:
+      - ~/DB:/app/data
+
+ 
+
+networks:
+  docker-network:
+
