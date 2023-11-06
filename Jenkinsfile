@@ -43,17 +43,17 @@ pipeline {
                     }
                 }
         }
-        stage('MVN SONARQUBE') {
-            steps {
-                 
-                sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=sonar'
-            
-            }
-        }
         stage('NEXUS') {
             steps {
                 sh 'mvn clean deploy -DskipTests'
             }
+        }
+        stage('MVN SONARQUBE') {
+                    steps {
+
+                        sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=sonar'
+
+                    }
         }
         stage('Deploy ') {
             steps {
