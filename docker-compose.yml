@@ -10,7 +10,7 @@ services:
     depends_on:
       - mysql
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/kaddem
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/kaddemdb
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=
     ports:
