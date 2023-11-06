@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
     environment:
       - MYSQL_ROOT_PASSWORD=null
-      - MYSQL_DATABASE=kaddemdb
+      - MYSQL_DATABASE=kaddem
     ports:
       - 3306:3306
     volumes:
@@ -13,14 +13,14 @@ services:
   kaddem-backend:
     depends_on:
       - mysqldb
-    image: dirakles/kaddem:1.0.0
-    # image: mrramyy/5gamix-grp4:1.0.0
+    image: hamzachenenaoui/kaddem:1.0.0
+
     restart: on-failure
     ports:
       - 8089:8089
     environment:
       SPRING_APPLICATION_JSON: '{
-    "spring.datasource.url": "jdbc:mysql://mysqldb:3306/kaddemdb?createDatabaseIfNotExist=true",
+    "spring.datasource.url": "jdbc:mysql://mysqldb:3306/kaddem?createDatabaseIfNotExist=true",
     "spring.datasource.username": "root",
     "spring.datasource.password": null,
     "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.MySQL5Dialect",
