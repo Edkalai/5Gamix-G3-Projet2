@@ -9,7 +9,7 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Run Unit Tests') {
+        stage(' JUnit Tests') {
             steps {
                  
                     script {
@@ -48,8 +48,13 @@ pipeline {
                         sh 'docker push oubeid12/back'
                     }
                 }
+        }
+        stage('NEXUS') {
+            steps {
+                sh 'mvn clean deploy -DskipTests'
             }
-        stage('Deploy Back/DB') {
+        }
+        stage('Deploy ') {
             steps {
                 
                 script {
