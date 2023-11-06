@@ -6,7 +6,7 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_DATABASE=kaddemdb
   spring-app:
-    image: khaled191/projet2:latest
+    image: khaled191/KhaledBenammar-5Gamix-G3-Projet2:latest
     depends_on:
       - mysql
     environment:
