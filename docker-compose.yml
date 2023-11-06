@@ -12,7 +12,7 @@ services:
     volumes:
       - db:/var/lib/mysql
   kaddem:
-    image: khalednjim/njimKhaled_G3_kaddem
+    image: khalednjim/njimkhaled_G3_kaddem
     depends_on:
       - mysql
     ports:
