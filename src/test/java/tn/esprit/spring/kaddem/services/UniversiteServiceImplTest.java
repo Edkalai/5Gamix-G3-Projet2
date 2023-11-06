@@ -13,10 +13,8 @@ import tn.esprit.spring.kaddem.repositories.UniversiteRepository;
 
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+
+import java.util.*;
 
 public class UniversiteServiceImplTest {
 
@@ -99,6 +97,7 @@ public class UniversiteServiceImplTest {
         Departement departement = new Departement("Gamix");
 
         universite.setIdUniv(1);
+        universite.setDepartements(new HashSet<>());
         departement.setIdDepart(1);
 
         when(universiteRepository.findById(1)).thenReturn(Optional.of(universite));
@@ -115,6 +114,7 @@ public class UniversiteServiceImplTest {
         Universite universite = new Universite("Esprit");
         Departement departement = new Departement("Gamix");
         universite.setIdUniv(1);
+        universite.setDepartements(new HashSet<>());
         departement.setIdDepart(1);
         when(departementRepository.findById(1)).thenReturn(Optional.of(departement));
         universite.getDepartements().add(departement);
