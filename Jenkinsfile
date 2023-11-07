@@ -23,13 +23,7 @@ pipeline {
                 sh 'mvn compile'
             }
         }
-       stage('MVN SONARQUBE') {
-             steps {
 
-                             sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=sonar'
-
-                    }
-        }
         stage('Login Docker') {
         steps {
         script {
@@ -63,6 +57,13 @@ pipeline {
                 }
                 
             }
+        }
+        stage('MVN SONARQUBE') {
+                     steps {
+
+                                     sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=sonar'
+
+                            }
         }
 
     }}
